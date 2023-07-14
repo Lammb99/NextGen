@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="wireframe">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+        referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/2.41.0/full.css"
+        integrity="sha512-FKI5eSJn7yOYx6w/oekerTiYmqkl0areDYZVM66CcLm9ty/BQa1U+gGn8XbPgehrgyxebAWKUWaE75nrjt26nQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Sign up</title>
+</head>
+
+<body>
+    <div class="bg-grey-lighter min-h-screen flex flex-col">
+        <div class="navbar bg-pink-200">
+            <div class="navbar-start">
+                <div class="dropdown">
+                    <label tabindex="0" class="btn btn-ghost btn-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h7" />
+                        </svg>
+                    </label>
+                    <ul tabindex="0"
+                        class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                        <li><a>Homepage</a></li>
+                        <li><a>Portfolio</a></li>
+                        <li><a>About</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="navbar-center">
+                <a class="btn btn-ghost normal-case text-xl">daisyUI</a>
+            </div>
+            <div class="navbar-end">
+                <button class="btn btn-ghost btn-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                <!-- <div class="dropdown dropdown-end">
+                  <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                    <div class="w-10 rounded-full">
+                      <img src="https://placeimg.com/80/80/people" />
+                    </div>
+                  </label>
+                  <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+                    <li>
+                      <a class="justify-between">
+                        Profile
+                        <span class="badge">New</span>
+                      </a>
+                    </li>
+                    <li><a>Settings</a></li>
+                    <li><a>Logout</a></li>
+                  </ul>
+                </div> -->
+            </div>
+        </div>
+
+        <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+            <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                <h1 class="mb-8 text-3xl text-center">Sign up</h1>
+                <input id="username" type="text" class="block border border-grey-light w-full p-3 rounded mb-4"
+                    name="fullname" placeholder="Full Name" />
+                <input id="email" type="text" class="block border border-grey-light w-full p-3 rounded mb-4"
+                    name="email" placeholder="Email" />
+                <input id="password" type="password" class="block border border-grey-light w-full p-3 rounded mb-4"
+                    name="password" placeholder="Password" />
+                <input id="confirmPassword" type="password"
+                    class="block border border-grey-light w-full p-3 rounded mb-4" name="confirm_password"
+                    placeholder="Confirm Password" />
+                <div class="flex justify-center"><button class="btn btn-wide" id="btn-signup">Create
+                        account</button></div>
+            </div>
+            <div class="text-grey-dark mt-1">
+                Already have an account?
+                <a class="no-underline border-b border-blue text-blue" href="./Log_in.html">
+                    Log in
+                </a>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(() => {
+            // get current user from local storage ? do not thing : redirect sign up 
+            let getAllUser = JSON.parse(localStorage.getItem("user"));
+            if (getAllUser) {
+                location.replace("./Home.html")
+            }
+        })
+
+    </script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import {
+            getAuth,
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword
+        } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js'
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyB1ZN_TauuNW5g9YWnGGhSU6scHku58wzM",
+            authDomain: "jsi02-2fcbf.firebaseapp.com",
+            projectId: "jsi02-2fcbf",
+            storageBucket: "jsi02-2fcbf.appspot.com",
+            messagingSenderId: "759919838975",
+            appId: "1:759919838975:web:ec30aa2f889faed125eeca",
+            measurementId: "G-BVNCXC003L"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        $("#btn-signup").click(() => {
+            const getUsernameVal = $("#username").val();
+            const getEmailVal = $("#email").val();
+            const password = $("#password").val();
+            const confirmPassword = $("#confirmPassword").val();
+            const auth = getAuth();
+            createUserWithEmailAndPassword(auth, getEmailVal, password)
+                .then((userCredential) => {
+                    // Signed in
+                    const user = userCredential.user;
+                    alert("Success")
+                    await setDoc(doc(db, "users", getEmailVal), {
+                        getUsernameVal,
+                        getEmailVal,
+                        password
+                    });
+                    location.replace("./Log_in.html")
+                    // ...
+                })
+                .catch((error) => {
+                    alert("Pls check again")
+
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    // ..
+                });
+        });
+        // Initialize Firebase
+    </script>
+</body>
+
+</html>
