@@ -18,7 +18,7 @@
 
 <body>
     <div class="bg-grey-lighter min-h-screen flex flex-col">
-        <div class="navbar bg-pink-200">
+        <div class="navbar bg-gray-200">
             <div class="navbar-start">
                 <div class="dropdown">
                     <label tabindex="0" class="btn btn-ghost btn-circle">
@@ -84,28 +84,26 @@
     </div>
     <script type="module">
         // Import the functions you need from the SDKs you need
-        import {
-            getAuth,
-            createUserWithEmailAndPassword,
-            signInWithEmailAndPassword,
-        } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js'
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
 
         // Your web app's Firebase configuration
         // For Firebase JS SDK v7.20.0 and later, measurementId is optional
         const firebaseConfig = {
-            apiKey: "AIzaSyB1ZN_TauuNW5g9YWnGGhSU6scHku58wzM",
-            authDomain: "jsi02-2fcbf.firebaseapp.com",
-            projectId: "jsi02-2fcbf",
-            storageBucket: "jsi02-2fcbf.appspot.com",
-            messagingSenderId: "759919838975",
-            appId: "1:759919838975:web:ec30aa2f889faed125eeca",
-            measurementId: "G-BVNCXC003L"
+            apiKey: "AIzaSyDvihWAlpAdz8FxowtSCNGRknMmh3yJqYE",
+            authDomain: "nextgen-d944d.firebaseapp.com",
+            projectId: "nextgen-d944d",
+            storageBucket: "nextgen-d944d.appspot.com",
+            messagingSenderId: "173577822071",
+            appId: "1:173577822071:web:16f2bd30638b9642e10b72",
+            measurementId: "G-8824TTDN50"
         };
-        const app = initializeApp(firebaseConfig);
 
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
 
         $("#btn-login").click(() => {
             const getEmailVal = $("#email").val();
@@ -115,13 +113,12 @@
                 .then((userCredential) => {
                     // Signed in
                     const user = userCredential.user;
-                    localStorage.setItem("users", JSON.stringify(user))
                     alert("Success")
-                    location.replace("Home.html")
+                    location.replace("index.html")
                     // ...
                 })
                 .catch((error) => {
-                    alert("Pls check again")
+                    alert("Please check again")
                     const errorCode = error.code;
                     const errorMessage = error.message;
                 });
