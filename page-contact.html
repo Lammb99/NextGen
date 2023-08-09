@@ -106,17 +106,13 @@
                 <form action="#" id="contact-form">
                     <div class="input-prepend">
                         <span class="add-on"><i class="icon-user"></i></span>
-                        <input class="span4" id="prependedInput" size="16" type="text" placeholder="Name">
+                        <input class="span4" id="name" size="16" type="text" placeholder="Enter your name">
                     </div>
                     <div class="input-prepend">
                         <span class="add-on"><i class="icon-envelope"></i></span>
-                        <input class="span4" id="prependedInput" size="16" type="text" placeholder="Email Address">
+                        <input class="span4" id="email" size="16" type="text" placeholder="Enter your email address">
                     </div>
-                    <div class="input-prepend">
-                        <span class="add-on"><i class="icon-globe"></i></span>
-                        <input class="span4" id="prependedInput" size="16" type="text" placeholder="Website URL">
-                    </div>
-                    <textarea class="span6"></textarea>
+                    <textarea class="span6" id="message" placeholder="Enter your message..."></textarea>
                     <div class="row">
                         <div class="span2">
                             <input type="submit" class="btn btn-inverse" value="Send Message">
@@ -196,23 +192,6 @@
                         <li><a href="#">Cras rutrum, massa non blandit convallis est</a></li>
                     </ul>
                 </div>
-                <div class="span3 footer-col">
-                    <h5>Flickr Photos</h5>
-                    <ul class="img-feed">
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                    </ul>
-                </div>
             </div>
 
             <div class="row">
@@ -238,6 +217,32 @@
 
     <!-- Scroll to Top -->
     <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+
+
+    <script>
+
+        const form = document.querySelector("form");
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault;
+            //do nothing if form not validated
+            if (!validateForm(form)) return;
+        });
+
+        const validateForm = (form) => {
+            let valid = true;
+            //check for emty fiels
+            let name = form.querySelector("#name");
+            let message = form.querySelector("#message");
+            let email = form.querySelector("#email");
+            if (name.value == "") {
+            giveError(name, "Please enter your name");
+        }
+    };
+
+
+    </script>
+
 
 </body>
 
